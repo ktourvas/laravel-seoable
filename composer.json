@@ -1,0 +1,27 @@
+{
+  "name": "tgp/laravel-seoable",
+  "description": "Laravel package providing seo data structures",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "tgp\\LaravelSeoable\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "tgp\\LaravelSeoable\\LaravelSeoableServiceProvider"
+      ],
+      "aliases": {}
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {},
+  "require-dev": {}
+}

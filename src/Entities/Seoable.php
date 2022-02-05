@@ -1,19 +1,26 @@
 <?php
 
-namespace ktourvas\LaravelSeoable\Entities;
+namespace tgp\LaravelSeoable\Entities;
 
 trait Seoable {
 
     public function seo()
     {
-        return $this->morphToMany(SeoItem::class, 'seoable')->withPivot('contextual_type_id');
+        return $this->morphToMany(SeoItem::class, 'seoable')->withPivot('lang', 'contextual_type_id');
     }
 
-    public function getseoTitleattribute() {
+    public function getseoTitleAttribute()
+    {
         return $this->seo()->wherePivot('contextual_type_id', 1)->first();
     }
 
-    public function getseoDescriptionattribute() {
+    public function getseoDescriptionAttribute()
+    {
+        return $this->seo()->wherePivot('contextual_type_id', 2)->first();
+    }
+
+    public function getseoKeywordsAttribute()
+    {
         return $this->seo()->wherePivot('contextual_type_id', 2)->first();
     }
 

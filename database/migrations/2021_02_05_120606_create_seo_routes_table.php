@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSeoablesTable extends Migration
+class CreateSeoRoutesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateSeoablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('seoables', function (Blueprint $table) {
+        Schema::create('seoable_routes', function (Blueprint $table) {
 
-            $table->integer('seo_item_id');
+            $table->increments('id');
 
-            $table->integer('seoable_id');
+            $table->string('domain', 100)->nullable();
 
-            $table->string('seoable_type', 255);
-
-            $table->string('lang', 10)->nullable();
-
-            $table->integer('contextual_type_id');
+            $table->string('route', 100);
 
             $table->timestamps();
 
@@ -37,6 +33,6 @@ class CreateSeoablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seoables');
+        Schema::dropIfExists('seoable_routes');
     }
 }

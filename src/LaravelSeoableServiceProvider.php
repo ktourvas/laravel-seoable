@@ -1,8 +1,9 @@
 <?php
 
-namespace ktourvas\LaravelSeoable;
+namespace tgp\LaravelSeoable;
 
 use Illuminate\Support\ServiceProvider;
+use tgp\LaravelSeoable\Http\Middleware\SeoableRoutes;
 
 class LaravelSeoableServiceProvider extends ServiceProvider
 {
@@ -17,10 +18,16 @@ class LaravelSeoableServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-//        $this->publishes([
-//            __DIR__.'/../config/laravel-seoable.php' => config_path('laravel-seoable.php'),
-//        ]);
+    }
 
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app['router']->aliasMiddleware('seoable', SeoableRoutes::class);
     }
 
 }
